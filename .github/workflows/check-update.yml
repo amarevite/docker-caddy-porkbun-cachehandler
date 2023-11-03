@@ -17,17 +17,10 @@ jobs:
         working-directory: docker-caddy-porkbun-cachehandler
         run: git checkout ${{ steps.repository.outputs.tag }}
 
-      # - name: list all files
-      #   shell: bash
-      #   run: tree "${GITHUB_WORKSPACE}/docker-caddy-porkbun-cachehandler/scripts/"
-        
-      # - name: list script
-      #   shell: bash
-      #   run: ls "${GITHUB_WORKSPACE}/scripts/caddy-update.sh"
-
       - name: Run script
         id: caddy-update
         shell: bash
+        working-directory: docker-caddy-porkbun-cachehandler
         run: bash "${GITHUB_WORKSPACE}/docker-caddy-porkbun-cachehandler/scripts/caddy-update.sh"
 
       - name: Commit
