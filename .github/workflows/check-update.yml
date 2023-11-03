@@ -20,7 +20,7 @@ jobs:
       - name: Run script
         id: caddy-update
         shell: bash
-        run: bash "${GITHUB_WORKSPACE}/scripts/check-update.sh"
+        run: bash "${GITHUB_WORKSPACE}/scripts/caddy-update.sh"
 
       - name: Commit
         uses: EndBug/add-and-commit@v9
