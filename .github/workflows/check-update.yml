@@ -15,12 +15,12 @@ jobs:
 
       - name: Checkout repo
         run: git checkout ${{ steps.repository.outputs.tag }}
-        # working-directory: docker-caddy-porkbun-cachehandler
+        working-directory: docker-caddy-porkbun-cachehandler
 
       - name: Run script
         id: caddy-update
         shell: bash
-        run: bash "${GITHUB_WORKSPACE}/scripts/caddy-update.sh"
+        run: bash "${GITHUB_WORKSPACE}/scripts/check-update.sh"
 
       - name: Commit
         uses: EndBug/add-and-commit@v9
