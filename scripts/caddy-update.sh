@@ -1,16 +1,14 @@
 #!/bin/bash
 
 # get latest version of a docker image:
-# 1) fetch a list of all repository tags (https://docs.docker.com/docker-hub/api/latest/#tag/repositories/paths/~1v2~1namespaces~1%7Bnamespace%7D~1repositories~1%7Brepository%7D~1tags/get)
-# 2) use jq to extract the version numbers (https://stedolan.github.io/jq/manual/)
-# 3) sort the version numbers in reverse order (https://manpage.me/?q=sort)
-# 4) extract the first line, which is the latest version (https://manpage.me/?q=head)
+# 1) fetch latest tag info from github api
+# 2) use jq to extract the rag_name (version number)
+# 3) use sed to remove the v from v2.7.5
 getLatestVersion() {
     local result=$(
-        curl -s "https://hub.docker.com/v2/repositories/$1/tags?page_size=50" | \
-        jq -r '.results[] | select(.name | match("^\\d(\\.\\d(\\.\\d)?)?$")) | .name' | \
-        sort -V -r | \
-        head -n 1
+        curl -s https://api.github.com/repos/caddyserver/caddy/releases/latest | \
+        jq -r '.tag_name' | \
+        sed 's/v//'
     )
 
     echo "${result}"
