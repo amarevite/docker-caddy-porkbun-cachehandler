@@ -15,15 +15,15 @@ jobs:
 
       - name: Checkout repo
         run: git checkout ${{ steps.repository.outputs.tag }}
-        working-directory: docker-caddy-porkbun-cachehandler
+        # working-directory: docker-caddy-porkbun-cachehandler
 
       - name: list all files
         shell: bash
         run: tree "${GITHUB_WORKSPACE}/scripts/"
         
-      - name: list script
-        shell: bash
-        run: ls "${GITHUB_WORKSPACE}/scripts/caddy-update.sh"
+      # - name: list script
+      #   shell: bash
+      #   run: ls "${GITHUB_WORKSPACE}/scripts/caddy-update.sh"
 
       - name: Run script
         id: caddy-update
