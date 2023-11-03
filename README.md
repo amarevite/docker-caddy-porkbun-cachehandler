@@ -1,4 +1,4 @@
-[![Check for Updates](https://github.com/erri120/docker-caddy-porkbun/actions/workflows/check-update.yml/badge.svg)](https://github.com/erri120/docker-caddy-porkbun/actions/workflows/check-update.yml)
+[![Check for Updates](https://github.com/amarevite/docker-caddy-porkbun-cachehandler/actions/workflows/check-update.yml/badge.svg)](https://github.com/amarevite/docker-caddy-porkbun-cachehandler/actions/workflows/check-update.yml)
 
 # docker-caddy-porkbun-cachehandler
 
@@ -12,10 +12,8 @@ This is a custom [Caddy](https://hub.docker.com/_/caddy)-based image that:
 
 The image is availabe via [GitHub Packages](https://github.com/amarevite/docker-caddy-porkbun-cachehandler/pkgs/container/docker-caddy-porkbun-cachehandler). You can use the `latest` tag or a specific Caddy version:
 
-- `erri120/docker-caddy-porkbun:latest` (latest from Docker Hub)
-- `ghcr.io/erri120/docker-caddy-porkbun:latest` (latest from GitHub)
-- `erri120/docker-caddy-porkbun:2.6.2` (Caddy `2.6.2` from Docker Hub)
-- `ghcr.io/erri120/docker-caddy-porkbun:2.6.2` (Caddy `2.6.2` from GitHub)
+- `ghcr.io/amarevite/docker-caddy-porkbun-cachehandler:latest` (latest from GitHub)
+- `ghcr.io/amarevite/docker-caddy-porkbun-cachehandler:2.7.5` (Caddy `2.7.5` from GitHub)
 
 The following platforms are supported:
 
