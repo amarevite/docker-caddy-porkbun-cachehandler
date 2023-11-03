@@ -14,12 +14,12 @@ jobs:
         run: git clone https://github.com/amarevite/docker-caddy-porkbun-cachehandler.git
 
       - name: Checkout repo
+        working-directory: docker-caddy-porkbun-cachehandler
         run: git checkout ${{ steps.repository.outputs.tag }}
-        # working-directory: docker-caddy-porkbun-cachehandler
 
       - name: list all files
         shell: bash
-        run: tree "${GITHUB_WORKSPACE}/scripts/"
+        run: tree "${GITHUB_WORKSPACE}/docker-caddy-porkbun-cachehandler/scripts/"
         
       # - name: list script
       #   shell: bash
