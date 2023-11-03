@@ -10,39 +10,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # - name: Checkout repository # had to split this nonsense into more nonsense below https://github.com/nektos/act/issues/678#issuecomment-1693751996
-    #     uses: actions/checkout@v3
-    #     with:
-    #       token: ${{ secrets.PAT_TOKEN }}
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Clone repo
-        run: git clone https://github.com/amarevite/docker-caddy-porkbun-cachehandler.git
+      # - name: Checkout repository # had to split this nonsense into more nonsense below https://github.com/nektos/act/issues/678#issuecomment-1693751996
+      #     uses: actions/checkout@v3
+      #     with:
+      #       token: ${{ secrets.PAT_TOKEN }}
 
-      - name: Checkout repo
-        working-directory: docker-caddy-porkbun-cachehandler
-        run: git checkout ${{ steps.repository.outputs.tag }}
+      # - name: Clone repo
+      #   run: git clone https://github.com/amarevite/docker-caddy-porkbun-cachehandler.git
+
+      # - name: Checkout repo
+      #   working-directory: docker-caddy-porkbun-cachehandler
+      #   run: git checkout ${{ steps.repository.outputs.tag }}
+
+      # - name: Run script
+      #   id: caddy-update
+      #   shell: bash
+      #   working-directory: docker-caddy-porkbun-cachehandler
+      #   run: bash "${GITHUB_WORKSPACE}/docker-caddy-porkbun-cachehandler/scripts/caddy-update.sh"
 
       - name: Run script
         id: caddy-update
         shell: bash
-        working-directory: docker-caddy-porkbun-cachehandler
-        run: bash "${GITHUB_WORKSPACE}/docker-caddy-porkbun-cachehandler/scripts/caddy-update.sh"
+        run: bash "${GITHUB_WORKSPACE}/scripts/caddy-update.sh"
 
-      - name: Git add
-        working-directory: docker-caddy-porkbun-cachehandler
-        run: git add Dockerfile
+      # - name: Git add/commit/push
+      #   working-directory: docker-caddy-porkbun-cachehandler
+      #   run: |
+      #     git add Dockerfile
+      #     git commit -m "updated Caddy version in Dockerfile"
+      #     git push
 
-      - name: Git commit
-        working-directory: docker-caddy-porkbun-cachehandler
-        run: git commit -m "updated Caddy version in Dockerfile"
-        
-      - name: Git push
-        working-directory: docker-caddy-porkbun-cachehandler
-        run: git push
-
-      # - name: Commit
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     add: "Dockerfile"
-      #     default_author: user_info
-      #     message: "Update Caddy to ${{ steps.caddy-update.outputs.LATEST_CADDY_VERSION }}"
+      - name: Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "Dockerfile"
+          default_author: user_info
+          message: "Update Caddy to ${{ steps.caddy-update.outputs.LATEST_CADDY_VERSION }}"
