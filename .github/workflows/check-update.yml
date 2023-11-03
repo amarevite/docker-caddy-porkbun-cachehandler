@@ -10,10 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
+      - name: Clone repo # had to split this nonsense into more nonsense https://github.com/nektos/act/issues/678#issuecomment-1693751996
+        run: git clone https://github.com/amarevite/docker-caddy-porkbun-cachehandler.git
+
+      - name: Checkout repo
+        run: git checkout ${{ steps.repository.outputs.tag }}
+        working-directory: docker-caddy-porkbun-cachehandler
 
       - name: Run script
         id: caddy-update
