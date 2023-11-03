@@ -19,7 +19,11 @@ jobs:
 
       - name: list all files
         shell: bash
-        run: tree "${GITHUB_WORKSPACE}"
+        run: tree "${GITHUB_WORKSPACE}/scripts/"
+        
+      - name: list script
+        shell: bash
+        run: ls "${GITHUB_WORKSPACE}/scripts/caddy-update.sh"
 
       - name: Run script
         id: caddy-update
