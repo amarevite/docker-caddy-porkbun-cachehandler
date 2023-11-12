@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  BASE_NAME: amarevite/docker-caddy-porkbun-cachehandler
+  BASE_NAME: ${{ github.repository }}
 
 jobs:
   buildx:
